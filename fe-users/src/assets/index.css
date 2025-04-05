@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: #f4f7f9;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form h2 {
+  margin-bottom: 24px;
+  color: #2f80ed;
+  text-align: center;
+}
+
+.login-form input {
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.login-form input:focus {
+  border-color: #2f80ed;
+  outline: none;
+}
+
+.login-form button {
+  background: linear-gradient(90deg, #2f80ed, #1c6dd0);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.login-form button:hover {
+  opacity: 0.9;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 12px;
+  color: #1c6dd0;
+  cursor: pointer;
+}
+
+.auth-container {
+  background-color: #f4f7f9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-box h2 {
+  margin-bottom: 20px;
+  color: #2f80ed;
+}
+
+.auth-img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.auth-box input {
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.auth-box input:focus {
+  border-color: #2f80ed;
+  outline: none;
+}
+
+.auth-box button {
+  background: linear-gradient(90deg, #2f80ed, #1c6dd0);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.auth-box button:hover {
+  opacity: 0.9;
+}
+
+.auth-switch {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #555;
+}
+
+.auth-switch a {
+  color: #2f80ed;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+
