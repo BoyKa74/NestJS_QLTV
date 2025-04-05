@@ -1,15 +1,13 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./components/login.jsx";
-import Register from "./components/register.jsx";
-import "./assets/index.css";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoginRegisterPage from "./components/LoginRegisterPage.jsx";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<LoginRegisterPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   )
