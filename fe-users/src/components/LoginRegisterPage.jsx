@@ -1,273 +1,114 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import "../assets/index.css";
 
 const LoginRegisterPage = () => {
+  // State để theo dõi form nào đang được hiển thị (true: login, false: register)
   const [showLoginForm, setShowLoginForm] = useState(true);
   
+  // Hàm chuyển đổi giữa form đăng nhập và đăng ký
   const toggleForm = () => {
     setShowLoginForm(!showLoginForm);
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      backgroundColor: '#2c3e50',
-      padding: '20px'
-    }}>
-      <div style={{
-        position: 'relative',
-        display: 'flex',
-        width: '100%',
-        maxWidth: '900px',
-        height: '500px',
-        backgroundColor: 'white',
-        borderRadius: '10px',
-        overflow: 'hidden',
-        boxShadow: '0 15px 30px rgba(0,0,0,0.3)'
-      }}>
-       
-
-        {/* Login Form */}
-        <div style={{
-          flex: 1,
-          padding: '40px 30px 40px 90px',
-          display: showLoginForm ? 'block' : 'none'
-        }}>
-          <h2 style={{
-            fontSize: '30px',
-            fontWeight: 'bold',
-            marginBottom: '5px',
-            color: '#333'
-          }}>Log in</h2>
-          <p style={{ 
-            color: '#777', 
-            marginBottom: '25px' 
-          }}>to your account</p>
+    <div className="auth-container">
+      {/* Box chính chứa cả hai phần form và social */}
+      <div className="auth-box">
+        {/* Form đăng nhập - chỉ hiển thị khi showLoginForm = true */}
+        <div className={`login-form ${showLoginForm ? 'active' : 'inactive'}`}>
+          {/* Phần tiêu đề được căn giữa */}
+          <div className="form-header">
+            <h2 className="form-title">Log in</h2>
+            <p className="form-subtitle">to your account</p>
+          </div>
           
+          {/* Form nhập thông tin đăng nhập */}
           <form>
             <input
               type="text"
               placeholder="username"
-              style={{
-                width: '100%',
-                padding: '12px 15px',
-                marginBottom: '15px',
-                border: '1px solid #ddd',
-                borderRadius: '25px',
-                fontSize: '16px'
-              }}
+              className="form-input"
             />
             <input
               type="password"
               placeholder="password"
-              style={{
-                width: '100%',
-                padding: '12px 15px',
-                marginBottom: '15px',
-                border: '1px solid #ddd',
-                borderRadius: '25px',
-                fontSize: '16px'
-              }}
+              className="form-input"
             />
             <button
               type="submit"
-              style={{
-                width: '100%',
-                padding: '12px',
-                backgroundColor: '#337095',
-                color: 'white',
-                border: 'none',
-                borderRadius: '25px',
-                cursor: 'pointer',
-                fontSize: '16px',
-                fontWeight: 'bold',
-                marginTop: '10px'
-              }}
+              className="form-button"
             >
               LOG IN
             </button>
           </form>
           
-          <p style={{
-            marginTop: '20px',
-            color: '#999',
-            textAlign: 'center',
-            cursor: 'pointer',
-            textDecoration: 'underline'
-          }}>
+          {/* Link quên mật khẩu */}
+          <p className="forgot-password">
             Forgot password?
           </p>
         </div>
 
-        {/* Registration Form */}
-        <div style={{
-          flex: 1,
-          padding: '40px 30px 40px 90px',
-          display: !showLoginForm ? 'block' : 'none'
-        }}>
-          <h2 style={{
-            fontSize: '30px',
-            fontWeight: 'bold',
-            marginBottom: '5px',
-            color: '#333'
-          }}>Sign up</h2>
-          <p style={{ 
-            color: '#777', 
-            marginBottom: '25px' 
-          }}>create your account</p>
+        {/* Form đăng ký - chỉ hiển thị khi showLoginForm = false */}
+        <div className={`register-form ${!showLoginForm ? 'active' : 'inactive'}`}>
+          {/* Phần tiêu đề được căn giữa */}
+          <div className="form-header">
+            <h2 className="form-title">Sign up</h2>
+            <p className="form-subtitle">create your account</p>
+          </div>
           
+          {/* Form nhập thông tin đăng ký */}
           <form>
             <input
               type="text"
               placeholder="Full name"
-              style={{
-                width: '100%',
-                padding: '12px 15px',
-                marginBottom: '15px',
-                border: '1px solid #ddd',
-                borderRadius: '25px',
-                fontSize: '16px'
-              }}
+              className="form-input"
             />
             <input
               type="email"
               placeholder="Email address"
-              style={{
-                width: '100%',
-                padding: '12px 15px',
-                marginBottom: '15px',
-                border: '1px solid #ddd',
-                borderRadius: '25px',
-                fontSize: '16px'
-              }}
+              className="form-input"
             />
             <input
               type="password"
               placeholder="Password"
-              style={{
-                width: '100%',
-                padding: '12px 15px',
-                marginBottom: '15px',
-                border: '1px solid #ddd',
-                borderRadius: '25px',
-                fontSize: '16px'
-              }}
+              className="form-input"
             />
             <button
               type="submit"
-              style={{
-                width: '100%',
-                padding: '12px',
-                backgroundColor: '#337095',
-                color: 'white',
-                border: 'none',
-                borderRadius: '25px',
-                cursor: 'pointer',
-                fontSize: '16px',
-                fontWeight: 'bold',
-                marginTop: '10px'
-              }}
+              className="form-button"
             >
               CREATE ACCOUNT
             </button>
           </form>
         </div>
 
-        {/* Social Login Section */}
-        <div style={{
-          flex: 1,
-          backgroundColor: '#1e2a38',
-          backgroundImage: 'url("https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: 'white',
-          textAlign: 'center',
-          padding: '0 30px'
-        }}>
-          <div style={{
-            backgroundColor: 'rgba(0,0,0,0.5)',
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0
-          }}></div>
-          
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <h2 style={{
-              fontSize: '28px',
-              fontWeight: 'bold',
-              marginBottom: '15px'
-            }}>
+        {/* Phần đăng nhập bằng mạng xã hội - thay đổi ảnh nền dựa vào trạng thái */}
+        <div className={`social-section ${showLoginForm ? 'login-bg' : 'register-bg'}`}>
+          {/* Nội dung phần mạng xã hội - được giới hạn chiều rộng để cân đối với form bên trái */}
+          <div className="social-content">
+            <h2 className="form-title">
               {showLoginForm ? 'Sign in' : 'Sign up'}
             </h2>
-            <p style={{ marginBottom: '30px' }}>
+            <p className="form-subtitle">
               with one of your social profiles
             </p>
             
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '15px',
-              marginBottom: '30px'
-            }}>
-              <button style={{
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                backgroundColor: '#3b5998',
-                border: 'none',
-                color: 'white',
-                fontSize: '20px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>f</button>
-              
-              <button style={{
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                backgroundColor: '#1da1f2',
-                border: 'none',
-                color: 'white',
-                fontSize: '20px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>t</button>
-              
-              <button style={{
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                backgroundColor: '#db4437',
-                border: 'none',
-                color: 'white',
-                fontSize: '20px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>g+</button>
+            {/* Các nút mạng xã hội */}
+            <div className="social-buttons">
+              <button className="social-button facebook">f</button>
+              <button className="social-button twitter">t</button>
+              <button className="social-button google">g+</button>
             </div>
             
+            {/* Link chuyển đổi giữa đăng nhập và đăng ký */}
             <p>
               {showLoginForm 
                 ? "Don't have an account? " 
                 : "Already have an account? "}
               <span 
                 onClick={toggleForm} 
-                style={{
-                  color: 'white',
-                  textDecoration: 'underline',
-                  cursor: 'pointer',
-                  fontWeight: 'bold'
-                }}
+                className="toggle-link"
               >
                 {showLoginForm ? 'sign up' : 'log in'}
               </span>
@@ -275,31 +116,11 @@ const LoginRegisterPage = () => {
           </div>
         </div>
         
-        {/* Toggle Button */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 10,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+        {/* Nút chuyển đổi giữa hai form - nằm chính giữa hai phần */}
+        <div className="toggle-button">
           <button 
             onClick={toggleForm}
-            style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              backgroundColor: 'white',
-              border: 'none',
-              boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
-              cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              color: '#555'
-            }}
+            className={!showLoginForm ? 'rotated' : ''}
           >
             or
           </button>

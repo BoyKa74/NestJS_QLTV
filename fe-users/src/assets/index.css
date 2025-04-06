@@ -23,15 +23,93 @@ body {
   font-family: "Segoe UI", sans-serif;
 }
 
-/* Simple test class to see if CSS is applied */
-.test-css {
-  background-color: red !important;
-  color: white !important;
-  border: 3px solid black !important;
-  padding: 20px !important;
-  font-weight: bold !important;
+/* Định nghĩa các hiệu ứng chuyển động cho cánh cửa */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+/* Các lớp cho animation */
+.slide-in {
+  animation: slideIn 0.5s forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.5s forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+.rotate {
+  animation: rotate 0.5s forwards;
+}
+
+/* Cánh cửa di chuyển */
+.door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-size: cover;
+  transition: left 1s, right 1s;
+}
+
+.door.left {
+  left: 0;
+  background-image: url('path-to-your-image.jpg'); /* Thay đường dẫn ảnh của bạn */
+}
+
+.door.right {
+  right: 0;
+  background-image: url('path-to-your-image.jpg'); /* Thay đường dẫn ảnh của bạn */
+}
+
+.door.open {
+  animation: slideIn 1s forwards;
+}
+
+.door.close {
+  animation: slideOut 1s forwards;
+}
+
+/* Form styles */
 .login-container {
   display: flex !important;
   justify-content: center !important;
@@ -40,34 +118,319 @@ body {
   background-color: #2c3e50 !important;
 }
 
-.login-container label {
-  display: block !important;
-  margin-bottom: 5px !important;
-  font-weight: bold !important;
+.form-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
-.login-container input {
-  width: 100% !important;
-  padding: 10px !important;
-  margin-bottom: 15px !important;
-  border: 1px solid #ccc !important;
-  border-radius: 4px !important;
+/* Hiệu ứng chuyển động form */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.login-container button {
-  background-color: blue !important;
-  color: white !important;
-  padding: 10px 15px !important;
-  border: none !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  width: 100% !important;
-  margin-bottom: 15px !important;
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 
-.login-container a {
-  color: white !important;
-  text-decoration: underline !important;
+/* Hiệu ứng chuyển động ảnh background */
+@keyframes backgroundFade {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+/* Lớp cho container chính */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2c3e50;
+  padding: 20px;
+}
+
+.auth-box {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* Form đăng nhập */
+.login-form {
+  flex: 0 0 50%;
+  padding: 40px;
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form.active {
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 2;
+}
+
+.login-form.inactive {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Form đăng ký */
+.register-form {
+  flex: 0 0 50%;
+  padding: 40px;
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.register-form.active {
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 2;
+}
+
+.register-form.inactive {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Phần đăng nhập bằng mạng xã hội */
+.social-section {
+  flex: 0 0 50%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 0 30px;
+  z-index: 3;
+  transition: background-image 0.5s ease;
+  box-sizing: border-box;
+}
+
+.social-section::before {
+  content: "";
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.social-section.login-bg {
+  background-image: url("https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80");
+  animation: backgroundFade 10s infinite ease-in-out;
+}
+
+.social-section.register-bg {
+  background-image: url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80");
+  animation: backgroundFade 10s infinite ease-in-out;
+}
+
+.social-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Nút chuyển đổi */
+.toggle-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle-button button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  transition: transform 0.3s ease;
+}
+
+.toggle-button button.rotated {
+  transform: rotate(180deg);
+}
+
+/* Các thành phần UI chung */
+.form-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-subtitle {
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.form-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 15px;
+  margin: 0 auto 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  display: block;
+}
+
+.form-button {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  background-color: #337095;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px auto 0;
+  display: block;
+}
+
+.forgot-password {
+  margin-top: 20px;
+  color: #999;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Nút mạng xã hội */
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.social-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.social-button.facebook {
+  background-color: #3b5998;
+}
+
+.social-button.twitter {
+  background-color: #1da1f2;
+}
+
+.social-button.google {
+  background-color: #db4437;
+}
+
+.toggle-link {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 
